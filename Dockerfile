@@ -4,9 +4,14 @@ MAINTAINER guolin <guo.lin@outlook.com>
 
 RUN apt-get update && \
     apt-get install -y --force-yes -m python-pip python-m2crypto &&\
+    
+RUN apt-get install -y openssh-server
+RUN mkdir -p /var/run/sshd
+RUN mkdir -p /root/.ssh &&\
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
+RUN sed -ri
+EXPOSE 22
 RUN pip install shadowsocks
 
 ENV SS_SERVER_ADDR 0.0.0.0
