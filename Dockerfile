@@ -7,7 +7,6 @@ RUN apt-get install -y openssh-server
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /root/.ssh
 RUN echo "root:123456" | chpasswd
-RUN sed -ri
 EXPOSE 22
 
 RUN apt-get install -y --force-yes -m python-pip python-m2crypto
