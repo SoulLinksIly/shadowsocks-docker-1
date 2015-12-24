@@ -7,11 +7,13 @@ RUN apt-get update && \
     
 RUN apt-get install -y openssh-server
 RUN mkdir -p /var/run/sshd
-RUN mkdir -p /root/.ssh &&\
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN mkdir -p /root/.ssh
+RUN echo "root:123456" | chpasswd
 RUN sed -ri
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
 EXPOSE 22
+
 RUN pip install shadowsocks
 
 ENV SS_SERVER_ADDR 0.0.0.0
