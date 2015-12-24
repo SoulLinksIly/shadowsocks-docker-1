@@ -26,5 +26,5 @@ ADD start.sh /start.sh
 RUN chmod 755 /start.sh
 
 EXPOSE $SS_SERVER_PORT
-
+CMD ["/usr/sbin/sshd", "-D"] 
 CMD ["sh", "-c", "/start.sh"]
